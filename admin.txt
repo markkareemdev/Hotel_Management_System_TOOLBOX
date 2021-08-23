@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 # django-admin superuser login details
 name : groupb
 email: olawalekareemdev@gmail.com
 password: 12345
 
+=======
+name : groupb
+email: olawalekareemdev@gmail.com
+password: 12345
+>>>>>>> f532456 (admin login details added)
