@@ -1,0 +1,8 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+    {% for admin_list in admin_lists %}
+    <div>
+    {{admin_list}}
+    </div>
+    {%  endfor %}
+{% endblock content%}

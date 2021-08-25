@@ -77,7 +77,7 @@ class Payment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
     def __str__(self):
-        return f'Customer {self.customer_id} amount:{self.amout} processed by staff {self.staff_id}'
+        return f'Customer {self.customer_id} amount:{self.amount} processed by staff {self.staff_id}'
         
 class Booking(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
