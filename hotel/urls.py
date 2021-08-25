@@ -14,7 +14,7 @@ urlpatterns = [
 
     # routing
 
-    path('/',views.homepage, name = 'homepage'),
+    path('',views.homepage, name = 'homepage'),
     path('/rooms',views.room_lists, name = 'home'),
     path('/rooms/<uuid:room_id>',views.single_room, name = 'single_room'),
     path('/rooms/rooms/<uuid:room_id>/booking',views.room_booking, name = 'booking'),
@@ -27,7 +27,7 @@ urlpatterns = [
 
     path('/admin',views.admin_list, name = 'admin_list'),
     path('/admin/create',views.admin_login, name = 'admin_create'),
-    path('//admin/<uuid:staff_id>',views.show_admin, name = 'show_admin'),
+    path('/admin/<uuid:staff_id>',views.show_admin, name = 'show_admin'),
     path('/admin/<uuid:staff_id>/edit',views.edit_admin, name = 'edit_admin'),
     path('/admin/<uuid:staff_id>/delete',views.delete_admin, name = 'delete_admin'),
     path('/admin/logs',views.logs, name = 'homepage'),
