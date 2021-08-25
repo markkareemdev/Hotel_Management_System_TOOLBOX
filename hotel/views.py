@@ -1,26 +1,29 @@
-from django.http import HttpResponse
-from django.shortcuts  import render
-
-
-##### sunday authorisation
 
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from hotel.forms import UserRegisterForm, ReceptionistRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django import forms
-from .models import User, Receptionist
+from .models import User, Receptionist,Room,RoomStatus,RoomType
 # from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserCreationForm
+
+
+# from django.urls import reverse
+
 
 def homepage(request):
     return render(request,'hotel/index.html')
     
-
 def about(request):
     return render(request,'hotel/about.html')
+
+
+
+
+# authorization and authentication    
 
 def admin_create(request):
     if request.method == "POST":
@@ -59,8 +62,6 @@ def admin_list(request):
     hotel_admin_list = User.objects.all()
     return render(request, 'hotel/admin_list.html', {'admin_lists': hotel_admin_list})
 
-# def admin_create(request):
-#     created_receptionist = Receptionist.objects.create()
 
 def show_admin(request, uuid):
     display_admin = Receptionist.objects.get(uuid(uuid))
@@ -74,3 +75,10 @@ def delete_admin(request, id):
 
 def logs(request):
     pass
+
+
+
+
+
+
+
