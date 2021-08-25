@@ -32,12 +32,20 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'hotel.apps.HotelConfig',
+    'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
 ]
 
 MIDDLEWARE = [
@@ -49,6 +57,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS =[
+    # Needed to login  by username in Django admin
+    'django.contrib.auth.backends.ModelBackend',
+
+    # 'allauth' specific authentication methods such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 ROOT_URLCONF = 'hotel_management_system.urls'
@@ -125,7 +141,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# admin site
+SITE_ID = 1
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# new 
+CRISPY_TEMPLATE = 'bootstrap5'
+LOGIN_REDIRECT_URL = 'hotel-home'
+LOGIN_URL = 'admin-login'
+

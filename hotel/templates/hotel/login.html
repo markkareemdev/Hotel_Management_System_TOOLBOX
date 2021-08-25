@@ -1,38 +1,23 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/png">
-        <title>Royal Hotel</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css' %}">
-        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
-        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
-        <!-- main css -->
-        <link rel="stylesheet" href="{% static 'css/style.css' %} ">
-        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-    </head>
-    <body>
-        
-        <!--================Breadcrumb Area =================-->
-        <section class="breadcrumb_area">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
-            <div class="container">
-                <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Login</h2>
-                </div>
+{% extends 'hotel/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section" >
+        <form  method="POST">
+            {%  csrf_token %}
+            <fieldset class="form-group" >
+                <legend class="border-bottom mb-4" >
+                    Join Today
+                </legend>
+                {{form| crispy}}
+            </fieldset>
+            <div class="form-group" >
+                <button class="btn btn-outline-info"  type="submit"> Sign Up</button>
             </div>
-        </section>
-        <!--================Breadcrumb Area =================-->
-
-        
-    
-    
-    </body>
-</html>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a href="#" class="ml-2"> Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content%}

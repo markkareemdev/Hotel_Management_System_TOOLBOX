@@ -1,55 +1,76 @@
 from django.http import HttpResponse
 from django.shortcuts  import render
 
-# homepage and links handler
 
-def home(request):
-    return render(request,'hotel/index.html')
-def about(request):
-    return render(request,'hotel/about.html')
-def accomodation(request):
-    return render(request,'hotel/accomodation.html') 
-def contact(request):
-    return render(request,'hotel/contact.html')
-def login(request):
-    return render(request,'hotel/login.html')
-def register(request):
-    return render(request,'hotel/register.html')
- 
-# routed urls handler
+##### sunday authorisation
+
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from hotel.forms import UserRegisterForm, ReceptionistRegisterForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django import forms
+from .models import User, Receptionist
+# from django.contrib.auth.models import User
+# from django.contrib.auth.forms import UserCreationForm
 
 def homepage(request):
-    pass
-def room_lists(request):
-    pass
-def single_room(request):
-    pass
-def room_booking(request):
-    pass
-def payment(request):
-    pass
-def room_checkin(request):
-    pass
-def room_checkout(request):
-    pass
+    return render(request,'hotel/index.html')
+    
+
+def about(request):
+    return render(request,'hotel/about.html')
+
+def admin_create(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, "Your account has been created successfully! You are now able to log in")
+            return redirect('admin-login')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'hotel/register.html', {'form': form})
+
+def register_receptionist(request):
+    if request.method == "POST":
+        form = ReceptionistRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            first_name = form.cleaned_data.get('first_name')
+            messages.success(request, "Your account has been created successfully as a Receptionist! You are now able to log in")
+            return redirect('admin-login')
+    else:
+        form = ReceptionistRegisterForm()
+    return render(request, 'hotel/register_Reception.html', {'form': form})
 
 
-def admin_login(request):
-    pass
+@login_required
+def profile(request):
+    return render(request, 'hotel/profile.html')
+
+@login_required
 def dashboard(request):
-    pass
-
-
+    return render(request, 'hotel/dashboard.html', {'dash': 'This is the dashboard'})
 
 def admin_list(request):
+    hotel_admin_list = User.objects.all()
+    return render(request, 'hotel/admin_list.html', {'admin_lists': hotel_admin_list})
+
+# def admin_create(request):
+#     created_receptionist = Receptionist.objects.create()
+
+def show_admin(request, uuid):
+    display_admin = Receptionist.objects.get(uuid(uuid))
+    return render(request, 'hotel/show_admin.html', {'show_admin': display_admin})
+
+def edit_admin(request, id):
     pass
-def admin_login(request):
+
+def delete_admin(request, id):
     pass
-def show_admin(request):
-    pass
-def edit_admin(request):
-    pass
-def delete_admin(request):
-    pass
+
 def logs(request):
     pass
