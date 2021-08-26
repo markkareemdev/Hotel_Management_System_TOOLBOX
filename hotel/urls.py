@@ -4,16 +4,19 @@ from . import views
 from . import views as users_views
 
 urlpatterns = [  
-    # routing: moshood part
 
-    # path('/',views.homepage, name = 'homepage'),
-    # path('/rooms',views.room_lists, name = 'home'),
-    # path('/rooms/<uuid:room_id>',views.single_room, name = 'single_room'),
-    # path('/rooms/rooms/<uuid:room_id>/booking',views.room_booking, name = 'booking'),
     # path('/rooms/<uuid:room_id>/booking/payment',views.payment, name = 'payment'),
     # path('/rooms/<uuid:room_id>/checkin',views.room_checkin, name = 'room_checkin'),
     # path('/rooms/<uuid:room_id>/checkout',views.room_checkout, name = 'room_checkout'),
 
+    ## moshood
+
+    path('rooms/', views.rooms, name='rooms'),
+    path('rooms/<uuid:room_id>/', views.rooms_detailed_view, name='rooms_detailed_view'),
+    path('rooms/<uuid:room_id>/booking/', views.booking, name='booking'),
+
+    # payment
+    path('rooms/<uuid:room_id>/booking/payment/', views.payment, name='payment'),
    
     ##### sunday
 

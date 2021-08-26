@@ -1,0 +1,37 @@
+{% extends 'hotel/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+    <div class="content-section" >
+{% for room in rooms %}
+    <div class="col-12 p-5" id="roomsMain">
+        <div class="row">
+        
+        <div class="col-md-6 d-block-sm px-3">
+            <h2>{{room.room_type}}</h2>
+            <p>{{room.room_description}}</p>     
+            <!--Icons -->
+            <div class="icons">
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-tv"></i>
+            <i class="fas fa-swimmer"></i>
+            <i class="fas fa-parking"></i>
+            </div>
+            <div>
+              <a href="{% url 'rooms_detailed_view' room.id %}">     
+                        {{ room}}
+                <button type="button" class="btn btn-primary pb-2 my-4 text-uppercase" data-toggle="modal"
+                data-target="#servicesmodal">Read More</button>
+                </a>         
+            </div>
+             </div> 
+        </div> 
+    </div> 
+  
+    {% endfor %}
+
+
+    </div>
+{% endblock content%}
