@@ -1,37 +1,32 @@
 {% extends 'hotel/base.html' %}
 {% load crispy_forms_tags %}
-
+{% load static %}
 
 
 {% block content %}
-    <div class="content-section" >
-{% for room in rooms %}
-    <div class="col-12 p-5" id="roomsMain">
-        <div class="row">
-        
-        <div class="col-md-6 d-block-sm px-3">
-            <h2>{{room.room_type}}</h2>
-            <p>{{room.room_description}}</p>     
-            <!--Icons -->
-            <div class="icons">
-            <i class="fas fa-wifi"></i>
-            <i class="fas fa-tv"></i>
-            <i class="fas fa-swimmer"></i>
-            <i class="fas fa-parking"></i>
-            </div>
-            <div>
-              <a href="{% url 'rooms_detailed_view' room.id %}">     
-                        {{ room}}
-                <button type="button" class="btn btn-primary pb-2 my-4 text-uppercase" data-toggle="modal"
-                data-target="#servicesmodal">Read More</button>
-                </a>         
-            </div>
-             </div> 
-        </div> 
-    </div> 
-  
-    {% endfor %}
+    <div class="accomodation_area section_gap" >
+        <div class="container">
+                    <div class="section_title text-center">
+                        <h2 class="title_color">Explore our rooms</h2>
+                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast </p>
+                    </div>
 
+                <div class="row mb_30">
+                    {% for room in rooms %}
+                        <div class=" col-sm-6">
+                            <div class="accomodation_item text-center">
+                                <div class="hotel_img">   
+                                    <img src="{% static 'image/room4.jpg'%}" alt="">
+                                </div>
+                                <a href="{% url 'rooms_detailed_view' room.id %}"><h4 class="sec_h4">{{room.type}}</h4></a>
+                                <a href="{% url 'rooms_detailed_view' room.id %}"><h4 class="sec_h4">{{room.price}}</h4></a>
+                                <a href="{% url 'rooms_detailed_view' room.id %}" class="btn theme_btn button_hover">Read More</a>
+                            </div>
+                        </div>           
+                    {% endfor %}
+                </div>
+
+        </div>
 
     </div>
 {% endblock content%}
