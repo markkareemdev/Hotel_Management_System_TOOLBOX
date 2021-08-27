@@ -1,4 +1,3 @@
-
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -9,8 +8,6 @@ from django import forms
 from .models import User, Receptionist,Room,RoomStatus,RoomType
 # from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserCreationForm
-
-
 # from django.urls import reverse
 
 
@@ -21,10 +18,6 @@ def about(request):
     return render(request,'hotel/about.html')
 
     
-
-
-
-
 room_types = RoomType.objects.all()
 room=Room.objects.all()
 room_status=RoomStatus.objects.all()
