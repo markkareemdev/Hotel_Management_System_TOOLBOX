@@ -19,8 +19,8 @@ def about(request):
 
     
 room_types = RoomType.objects.all()
-room=Room.objects.all()
-room_status=RoomStatus.objects.all()
+room = Room.objects.all()
+room_status = RoomStatus.objects.all()
 context = {'rooms': room_types,'room_status':room_status,'room_no':room}
 
 def rooms(request):
