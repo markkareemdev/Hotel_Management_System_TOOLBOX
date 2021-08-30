@@ -177,3 +177,8 @@ CRISPY_TEMPLATE = 'bootstrap5'
 LOGIN_REDIRECT_URL = 'hotel-home'
 LOGIN_URL = 'admin-login'
 
+
+
+
+
+# 
