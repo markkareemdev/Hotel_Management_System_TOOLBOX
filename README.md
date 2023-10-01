@@ -1,4 +1,4 @@
-# Hotel_Management_System_GroupB
+# Hotel_Management_System
 An hotel management system built on the Django frame work, Html5, Bootstrap, Jquerry.
 
 # collaborators
